@@ -22,6 +22,9 @@ _license() {
     gpl3)
       LICENSE="https://www.gnu.org/licenses/gpl-3.0.txt"
       ;;
+    mit)
+      LICENSE="https://get.bjphoster.com/MIT_LICENSE"
+      ;;
     *)
       echo "invalid or no license provided, using empty file"
       LICENSE="https://get.bjphoster.com/emptyfile"
