@@ -17,19 +17,18 @@ _initialize_repo() {
 _license() {
   case "$LICENSE" in
     gpl2)
-      LICENSE="https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt"
+      curl --silent "https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt" -o LICENSE
       ;;
     gpl3)
-      LICENSE="https://www.gnu.org/licenses/gpl-3.0.txt"
+      curl --silent "https://www.gnu.org/licenses/gpl-3.0.txt" -o LICENSE
       ;;
     mit)
-      LICENSE="https://get.bjphoster.com/MIT_LICENSE"
+      curl --silent "https://get.bjphoster.com/MIT_LICENSE" -o LICENSE
       ;;
     *)
       echo "invalid or no license provided, using empty file"
-      LICENSE="https://get.bjphoster.com/emptyfile"
+      curl --silent "https://get.bjphoster.com/emptyfile" -o LICENSE
   esac
-  curl --silent "$LICENSE" -o LICENSE
 }
 
 # main function, executes everything in the right order
