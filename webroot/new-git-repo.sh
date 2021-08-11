@@ -24,6 +24,14 @@ _license() {
       ;;
     mit)
       curl --silent "https://get.bjphoster.com/MIT_LICENSE" -o LICENSE
+      YEAR=$(date +%Y)
+      sed -i "s/{YEAR}/${YEAR}/" LICENSE
+      OWNER=$(git config --get user.name)
+      if [ $? -eq 0 ]; then
+        sed -i "s/{OWNER}/${OWNER}/" LICENSE
+      else
+        echo "no user name found, perhaps git is not configured properly, leaving repository owner untouched"
+      fi
       ;;
     *)
       echo "invalid or no license provided, using empty file"
