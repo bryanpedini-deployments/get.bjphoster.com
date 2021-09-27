@@ -39,11 +39,17 @@ _license() {
   esac
 }
 
+# create baseline README.md
+_readme() {
+  echo "# $(basename $(pwd))" > README.md
+}
+
 # main function, executes everything in the right order
 _main() {
   _git_check
   _initialize_repo
   _license
+  _readme
 }
 
 # we should actually execute the main function, don't we?
