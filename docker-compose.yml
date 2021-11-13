@@ -6,17 +6,17 @@ services:
     labels:
       - traefik.enable=true
       ### Section HTTP
-      - traefik.http.routers.http-get_bjphoster_com.entrypoints=http
+      - traefik.http.routers.http-${TRAEFIK_ROUTER}.entrypoints=http
       # redirect to HTTPS only
-      - traefik.http.routers.http-get_bjphoster_com.middlewares=http-to-https
-      - traefik.http.routers.http-get_bjphoster_com.rule=Host(`get.bjphoster.com`)
+      - traefik.http.routers.http-${TRAEFIK_ROUTER}.middlewares=http-to-https
+      - traefik.http.routers.http-${TRAEFIK_ROUTER}.rule=Host(`${TRAEFIK_HOST}`)
       ### Section HTTPS
-      - traefik.http.routers.https-get_bjphoster_com.entrypoints=https
+      - traefik.http.routers.https-${TRAEFIK_ROUTER}.entrypoints=https
       # configure the exposed service
-      - traefik.http.routers.https-get_bjphoster_com.rule=Host(`get.bjphoster.com`)
+      - traefik.http.routers.https-${TRAEFIK_ROUTER}.rule=Host(`${TRAEFIK_HOST}`)
       # of course, enable TLS and it's certificate provider
-      - traefik.http.routers.https-get_bjphoster_com.tls=true
-      - traefik.http.routers.https-get_bjphoster_com.tls.certresolver=letsencrypt
+      - traefik.http.routers.https-${TRAEFIK_ROUTER}.tls=true
+      - traefik.http.routers.https-${TRAEFIK_ROUTER}.tls.certresolver=letsencrypt
     image: ${WEB_IMAGE}
     networks:
       - traefik-proxy
