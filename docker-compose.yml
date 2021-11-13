@@ -17,6 +17,8 @@ services:
       # of course, enable TLS and it's certificate provider
       - traefik.http.routers.https-${TRAEFIK_ROUTER}.tls=true
       - traefik.http.routers.https-${TRAEFIK_ROUTER}.tls.certresolver=letsencrypt
+      # specify a service so a custom port can be used
+      - traefik.http.services.${TRAEFIK_SERVICE}.loadbalancer.server.port=${TRAEFIK_SERVICE_PORT}
     image: ${WEB_IMAGE}
     networks:
       - traefik-proxy
