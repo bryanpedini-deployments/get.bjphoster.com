@@ -9,5 +9,7 @@ pip3 install ansible
 git clone https://git.bjphoster.com/b.pedini/server-setup.git
 cd server-setup
 ansible-playbook main.yml
+cd ..
 
 userdel --remove $(grep "1000:1000" /etc/passwd | cut -d':' -f1)
+rm -rf server-setup
