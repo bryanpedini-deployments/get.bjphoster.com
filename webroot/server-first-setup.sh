@@ -1,9 +1,20 @@
 #!/usr/bin/env bash
 set -e
 
+# Check operating system
+if [ command -v apt ]; then
+  os_debian=true
+elif [ command -v yum ]; then
+  os_rhel=true
+fi
+
 # Install git, python3 and ansible
-apt update
-apt install -y git python3 python3-pip
+if [ $os_debian = true ]; then
+  apt update
+  apt install -y git python3 python3-pip
+elif [ $os_rhel = true ]; then
+  yum install -y python3 python3-pip
+fi
 pip3 install ansible
 
 git clone https://git.bjphoster.com/b.pedini/server-setup.git
