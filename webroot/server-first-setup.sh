@@ -13,7 +13,7 @@ if [ "$os_debian" = true ]; then
   apt update
   apt install -y git python3 python3-pip
 elif [ "$os_rhel" = true ]; then
-  yum install -y python3 python3-pip
+  yum install -y git python3 python3-pip
 fi
 pip3 install ansible
 
