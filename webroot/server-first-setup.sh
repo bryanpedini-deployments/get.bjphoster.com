@@ -14,10 +14,13 @@ fi
 if [ "$os_debian" = true ]; then
   apt update
   apt install -y git python3 python3-pip
+  pip3 install ansible
 elif [ "$os_rhel" = true ]; then
   yum install -y git python3 python3-pip
+  pip install --upgrade pip
+  pip install setuptools_rust
+  pip install ansible
 fi
-pip3 install ansible
 
 git clone https://git.bjphoster.com/b.pedini/server-setup.git
 cd server-setup
