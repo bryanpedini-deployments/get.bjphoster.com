@@ -17,7 +17,7 @@ if [ "$os_debian" = true ]; then
   pip3 install ansible
 elif [ "$os_rhel" = true ]; then
   yum install -y git python3 python3-pip
-  pip install --upgrade pip
+  pip3 install --upgrade pip
   pip install setuptools_rust
   pip install ansible
 fi
