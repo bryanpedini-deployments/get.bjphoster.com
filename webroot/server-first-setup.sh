@@ -2,9 +2,11 @@
 set -e
 
 # Check operating system
-if [ command -v apt ]; then
+PKG_APT=$(command -v apt | cat)
+PKG_YUM=$(command -v yum | cat)
+if [ ! -z $PKG_APT ]; then
   os_debian=true
-elif [ command -v yum ]; then
+elif [ ! -z $PKG_YUM ]; then
   os_rhel=true
 fi
 
