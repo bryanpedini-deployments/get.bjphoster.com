@@ -11,5 +11,8 @@ cd server-setup
 ansible-playbook main.yml
 cd ..
 
-userdel --remove $(grep "1000:1000" /etc/passwd | cut -d':' -f1)
+DEFAULTUSER=$(grep "1000:1000" /etc/passwd | cat | cut -d':' -f1)
+if [ ! -z $DEFAULTUSER ]; then
+  userdel --remove $DEFAULTUSER
+fi
 rm -rf server-setup
